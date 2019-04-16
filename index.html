@@ -1,0 +1,139 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Algoritmos de Escalonamento</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/algoritimos.js"></script>
+    <!--<script src="js/grafico.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script>
+    </script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="text-center">
+            <h2>Algoritmos de Escalonamento</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" colspan="5">
+                            <h3>Tabela de Processos</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Pid</th>
+                        <th>Tempo Chegada</th>
+                        <th>Tempo Execução</th>
+                        <th>Deadline</th>
+                        <th class="text-right">
+                            <button type="button" name="button" data-toggle="modal" data-target="#modalAdicionar" class="btn btn-success">Adicionar</button>
+                            <button id="btn-limpar" class="btn btn-danger">Limpar</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-processos"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-3">
+            <div class="form-group">
+                <span><b>Quantum</b></span>
+                <input type="number" class="form-control" id="quantum" placeholder="Defina o quantum aqui." required>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <span><b>Sobrecarga</b></span>
+                <input type="number" class="form-control" id="sobrecarga" placeholder="Defina o Sobrecarga aqui.">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" style="margin-left: 19%;">
+            <button type="submit" class="btn btn-primary" id="btn-fifo">FIFO</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary" id="btn-sjf">SJF</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary" id="btn-round-robin">Round-Robin</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary" id="btn-edf">EDF</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 text-center">
+            <h4 id="turnaround">Turnaround Médio:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+            <canvas id="myChart" width="200" height="100"></canvas>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="text-center">
+            <p>Projeto desenvolvido por Liliane Fiuza e Luara Mineiro para a disciplina Sistemas Operacionais -
+                2019.1
+                UFBA - Professor Maycon Leone</p>
+        </div>
+    </div>
+</body>
+
+<div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="modalAdicionarLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Adicionar Processo</h4>
+            </div>
+            <form class="form-horizontal" onsubmit="gerencia.adiciona(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="chegada" class="col-sm-4 control-label">Tempo Chegada</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" name="chegada" id="chegada" placeholder="Digite o Tempo Chegada"
+                                required min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="execucao" class="col-sm-4 control-label">Tempo Execução</label>
+                        <div class="col-sm-7">
+                            <input type="number" autofocus class="form-control" name="execucao" id="execucao"
+                                placeholder="Digite o Tempo Execução" min="1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline" class="col-sm-4 control-label">Deadline</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" name="deadline" id="deadline" placeholder="Digite o Deadline"
+                                min="0" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" id="btn-adicionar">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</html>

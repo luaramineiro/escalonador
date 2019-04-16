@@ -1,0 +1,12 @@
+body {
+    background-color: #c1c1c126;
+}
+.modal-header {
+    background-color: #5cb85c;
+}
+.modal-title {
+    color: #ffffff;
+}
+.btn-primary {
+    width: 120px;
+}
