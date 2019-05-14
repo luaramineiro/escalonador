@@ -10,6 +10,9 @@ body {
 .btn-primary {
     width: 120px;
 }
+.font-size-small {
+    font-size: small;
+}
 .square {
     border: 1px solid black;
     height: 30px;

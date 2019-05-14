@@ -54,24 +54,20 @@ function gerarGrafico(algoritmo, preemptivo = false, deadline = true) {
     var soma = 0;
     var relogio = 0;
     var dataEsperando = [];
-    var dataChegou = [];
     var dataExecutando = [];
 
     $('#tbody').html('');
+    $('#table').show();
 
     // algoritimos Não Preemptivos 
     if (!preemptivo) {
         processosOrdenados.forEach(processo => {
-            if ((relogio - processo.chegada) > 0)
-                dataEsperando.push(relogio - processo.chegada);
-            else
-                dataEsperando.push(0);
+            dataEsperando.push(relogio - processo.chegada);
 
             relogio += processo.execucao;
             soma += relogio - processo.chegada;
 
             dataExecutando.push(relogio);
-            dataChegou.push(processo.chegada);
         });
 
         //cria quadrados
@@ -82,6 +78,11 @@ function gerarGrafico(algoritmo, preemptivo = false, deadline = true) {
                 $('#tr-' + pid).append('<td class="square" id="td-' + index + '"></td>');
             }
         });
+        $('#tbody').append('<tr id="numbers"></tr>');
+        for (let index = 0; index <= relogio; index++) {
+            $('#numbers').append('<td class="text-right font-size-small">' + index + '</td>');
+        }
+        $('#table').show();
 
         //pintar quadrados (linha = processos / coluna = relogio)
         for (let coluna = 0; coluna < relogio; coluna++) {
@@ -90,10 +91,10 @@ function gerarGrafico(algoritmo, preemptivo = false, deadline = true) {
                 const chegada = processosOrdenados[linha].chegada;
                 //esperando
                 if ((coluna >= chegada) && (dataEsperando[linha] > 0)) {
+                    dataEsperando[linha]--;
                     setTimeout(function name() {
                         $('#tr-' + pid).find('#td-' + coluna).addClass('waiting');
                     }, coluna * 1000);
-                    dataEsperando[linha]--;
                 }
                 //executando
                 else if ((coluna >= chegada) && (coluna < dataExecutando[linha])) {

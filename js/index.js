@@ -2,13 +2,13 @@
 var processos = [];
 
 $(document.body).ready(function () {
-    $('#myChart').hide();
+    $('#table').hide();
     $('#turnaround').hide();
 
     // Limpa a tabela dos processos, o gráfico e lista de processos
     $('#btn-limpar').click(function (e) {
         $('#tabela-processos').html('');
-        $('#myChart').hide();
+        $('#table').hide();
         $('#turnaround').hide();
         processos = [];
     });
