@@ -5,10 +5,8 @@
     <title>Algoritmos de Escalonamento</title>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/algoritimos.js"></script>
+    <script src="js/algoritmos.js"></script>
     <!--<script src="js/grafico.js"></script>-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
@@ -51,13 +49,14 @@
         <div class="col-sm-offset-3 col-sm-3">
             <div class="form-group">
                 <span><b>Quantum</b></span>
-                <input type="number" class="form-control" id="quantum" placeholder="Defina o quantum aqui." required>
+                <input type="number" class="form-control" value="2" id="quantum" placeholder="Defina o quantum aqui."
+                    required>
             </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group">
                 <span><b>Sobrecarga</b></span>
-                <input type="number" class="form-control" id="sobrecarga" placeholder="Defina o Sobrecarga aqui.">
+                <input type="number" class="form-control" value="1" id="sobrecarga" placeholder="Defina o Sobrecarga aqui.">
             </div>
         </div>
     </div>
@@ -83,7 +82,25 @@
     </div>
     <div class="row">
         <div class="col-sm-offset-2 col-sm-8">
-            <canvas id="myChart" width="200" height="100"></canvas>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="square execute"></td>
+                        <td>&nbsp;Executando</td>
+                        <td>&nbsp;</td>
+                        <td class="square waiting"></td>
+                        <td>&nbsp;Esperando</td>
+                        <td>&nbsp;</td>
+                        <td class="square overload"></td>
+                        <td>&nbsp;Sobrecarga</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <tbody id="tbody"></tbody>
+            </table>
         </div>
     </div>
     <br>

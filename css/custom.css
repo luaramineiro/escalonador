@@ -10,3 +10,17 @@ body {
 .btn-primary {
     width: 120px;
 }
+.square {
+    border: 1px solid black;
+    height: 30px;
+    width: 30px;
+}
+.execute {
+  background-color: #28a745;
+}
+.waiting {
+  background-color: #ffc107;
+}
+.overload {
+    background-color: #dc3545;
+}

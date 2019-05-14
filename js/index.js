@@ -32,7 +32,7 @@ $(document.body).ready(function () {
         processo['execucao'] = parseInt(execucao);
         processo['chegada'] = parseInt(chegada);
         processo['deadline'] = parseInt(deadline);
-        processo['falta_executar'] = parseInt(execucao);
+        processo['faltaexecutar'] = parseInt(execucao);
 
         // Adiciona o processo a lista de processos
         processos.push(processo);
