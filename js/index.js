@@ -33,6 +33,7 @@ $(document.body).ready(function () {
         processo['chegada'] = parseInt(chegada);
         processo['deadline'] = parseInt(deadline);
         processo['faltaexecutar'] = parseInt(execucao);
+        processo['finalizou'] = false;
 
         // Adiciona o processo a lista de processos
         processos.push(processo);
